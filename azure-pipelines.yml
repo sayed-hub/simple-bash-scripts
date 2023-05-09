@@ -11,6 +11,9 @@ jobs:
   displayName: Build job
   # Define the steps for the build job here
   # ...
+  steps:
+    - script: echo Hello, world!
+  
 
 - job: create_tag
   displayName: Create Git tag
