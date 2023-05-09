@@ -13,6 +13,10 @@ jobs:
   # ...
   steps:
     - script: echo Hello, world!
+  - script: |
+      git config --global user.email "ahammadsayed577@gmail.com"
+      git config --global user.name "Sayed"
+    displayName: 'Set Git user information'
   
 
 - job: create_tag
@@ -20,11 +24,6 @@ jobs:
   dependsOn: build
   condition: succeeded()
   steps:
-  - script: |
-    git config --global user.email "ahammadsayed577@gmail.com"
-    git config --global user.name "Sayed"
-  displayName: 'Set Git user information'
-
   - script: |
       git tag -a $(Build.BuildNumber) -m "Build passed for $(Build.SourceBranchName)"
       git push --tags
