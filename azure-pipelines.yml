@@ -5,9 +5,7 @@
 
 trigger:
 - master
-variables:
-  - name: GITHUB_TOKEN
-    value: <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>
+
 
 jobs:
 - job: build
@@ -15,7 +13,10 @@ jobs:
   # Define the steps for the build job here
   # ...
   steps:
+    - checkout: self
     - script: echo Hello, world!
+
+  
 
 - job: create_tag
   displayName: Create Git tag
@@ -25,7 +26,8 @@ jobs:
   - script: |
       git config --global user.email "ahammadsayed577@gmail.com"
       git config --global user.name "sayed-hub"
-      echo ${{ variables.GITHUB_TOKEN }} | git credential-store --file ~/.git-credentials store
+      echo "machine github.com login $(GIT_TOKEN)" >> .git/credentials
       git tag -a $(Build.BuildNumber) -m "Build passed for $(Build.SourceBranchName)"
-      git push --tags
+      git push --tags https://$(GIT_USERNAME):$(PAT)@github.com/sayed-hub/privaterepo
+
     displayName: Create and push Git tag
