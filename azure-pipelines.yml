@@ -7,7 +7,7 @@ trigger:
 - master
 variables:
   - name: GITHUB_TOKEN
-    value: <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>
+    value: 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
 
 jobs:
 - job: build
