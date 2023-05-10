@@ -13,7 +13,7 @@ jobs:
   # Define the steps for the build job here
   # ...
   steps:
-    - checkout: self
+    - checkout: selfi
     - script: echo Hello, world!
 
   
