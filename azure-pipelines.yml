@@ -28,6 +28,6 @@ jobs:
       git config --global user.name "sayed-hub"
       echo "machine github.com login $(GIT_TOKEN)" >> .git/credentials
       git tag -a $(Build.BuildNumber) -m "Build passed for $(Build.SourceBranchName)"
-      git push --tags https://$(GIT_USERNAME):$(PAT)@github.com/sayed-hub/privaterepo
+      git push --tags https://$(GIT_USERNAME):$(PAT)@github.com/sayed-hub/simple-bash-scripts
 
     displayName: Create and push Git tag
